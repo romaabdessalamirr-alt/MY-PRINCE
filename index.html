@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <title>Terminal // Secure_Access</title>
     <style>
-        body { background-color: #0b0f19; color: #58a6ff; font-family: 'Courier New', Courier, monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+        body { background-color: #0b0f19; color: #58a6ff; font-family: 'Courier New', Courier, monospace; display: flex; justify-content: center; align-items: center; min-height: 100vh; margin: 0; padding: 20px 0; }
         .terminal { background: #161b22; padding: 35px; border-radius: 12px; border: 1px solid #30363d; width: 85%; max-width: 500px; box-shadow: 0 10px 30px rgba(0,0,0,0.7); text-align: center; }
         h1 { color: #2ea44f; font-size: 22px; margin-bottom: 20px; letter-spacing: 1px; }
         p { line-height: 1.6; color: #c9d1d9; text-align: left; }
@@ -14,6 +14,13 @@
         button { background: #2ea44f; color: white; border: none; padding: 12px 20px; border-radius: 6px; cursor: pointer; font-family: monospace; font-size: 16px; margin-top: 15px; width: 95%; font-weight: bold; letter-spacing: 1px; transition: 0.2s; }
         button:hover { background: #3fb950; }
         .hidden-content { display: none; margin-top: 25px; border-top: 1px dashed #30363d; padding-top: 25px; animation: fadeIn 1s; }
+        ul { text-align: left; color: #c9d1d9; line-height: 1.8; margin-top: 10px; margin-bottom: 20px; }
+        li { margin-bottom: 8px; }
+        
+        /* Custom Box for Lyrics */
+        .lyrics-box { background: #0d1117; border: 1px solid #30363d; border-radius: 6px; padding: 15px; height: 150px; overflow-y: scroll; text-align: center; font-size: 14px; color: #8b949e; margin: 20px 0; line-height: 1.8; }
+        .lyrics-title { color: #ff7b72; font-weight: bold; margin-bottom: 8px; }
+        
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
@@ -21,27 +28,81 @@
 
 <div class="terminal">
     <h1>[!] SYSTEM_OVERRIDE_DETECTED</h1>
-    <p>A restricted file has been deployed by your favorite <span class="accent">Pisces</span>. To decrypt the emotional payload and unlock the transmission, enter your specific secret passcode below.</p>
+    <p>Hey my favorite person! I hid a little surprise for you here. 🥰</p>
+    <p>To unlock it, you just have to type what does your PRINCESS LOVE BEIGN CALLED BY YOU?</p>
+    <p class="accent" style="text-align: center; margin-top: 15px;">Good luck, I love you!</p>
     
     <input type="text" id="passcode" placeholder="Enter password (lowercase)...">
     <button onclick="checkCode()">RUN DECRYPTION</button>
 
     <div id="secretArea" class="hidden-content">
-        <h1 style="color: #ff7b72;">♥ DECRYPTION SUCCESSFUL ♥</h1>
-        <p><strong>Hi to my handsome Prince, 👑</strong></p>
-        <p>I know how much you love programming and how incredibly hard you work at medical school, so I coded this little private terminal space just for you.</p>
-        <p>Even though I graduated and had to move, my heart stays completely anchored right where you are. I love that we still talk every single day and love each other so deeply. Distance means absolutely nothing when someone is your entire world.</p>
-        <p class="accent">Check your front doorstep or your food delivery app right now—your favorite brain fuel is on its way! Always loving you, your Pisces.</p>
+        <h1 style="color: #ff7b72;">♥ the little things I LOVE ABOUT YOU  ♥</h1>
+        <p><strong>  to the dearest piece of my heart, ❤️, </strong></p>
+        <p>I know how much you love programming, so I coded this little LINES space just for you. I've fallen so deeply in love with YOU , it's absolutely insane. And god I never wanna stop falling for  YOU </p>
+        <p>I love that we still talk every single day and love each other so deeply. Distance means absolutely nothing when someone is PART OF  your entire world.</p>
+        <p>Thank you for being my favorite person every single day. ❤️</p>
+        
+        <p class="accent" style="margin-top: 20px; font-size: 18px;">✨ The little things I love about you:</p>
+        <ul>
+            <li>The way you make ordinary moments feel so special</li>
+            <li>How you hold my hand so cute</li>
+            <li>The way you make me laugh, you're so funny and I love it</li>
+            <li>How you love so deeply in an innocent way, I love it</li>
+            <li>Your encouragement</li>
+            <li>Just you</li>
+        </ul>
+
+        <p>I love every little thing about you today, tomorrow, and always. I really want you to know how much you mean to me. ❤️</p>
+        
+        <!-- Lyrics Container -->
+        <div class="lyrics-box">
+            <div class="lyrics-title">🎵 Now Playing: Baby, I Love You (Tiffany Alvord)</div>
+            If I knew words to say<br>
+            I'd say them all to you<br>
+            To guide you on your way<br>
+            And see your troubles through<br><br>
+            But I've got a simple song<br>
+            And I've got a melody<br>
+            And I'm gonna sing along<br>
+            'Til you sing along with me<br><br>
+            Baby, I love you<br>
+            Baby, I do<br>
+            Baby, I love you<br>
+            Nobody else but you<br><br>
+            I'll write it in a letter<br>
+            And mail it away<br>
+            To make you feel better<br>
+            On a rainy day<br><br>
+            'Cause you are my sunshine<br>
+            When everything is gray<br>
+            And I am so glad that<br>
+            You came my way
+        </div>
+        
+        <p class="accent" style="margin-top: 25px; text-align: center;">I love you!</p>
     </div>
 </div>
+
+<!-- Hidden Background Audio Tracker -->
+<audio id="bgMusic" loop>
+    <source src="https://soundhelix.com" type="audio/mpeg">
+</audio>
 
 <script>
 function checkCode() {
     var code = document.getElementById("passcode").value.toLowerCase().trim();
     if(code === "romsie") {
         document.getElementById("secretArea").style.display = "block";
+        
+        // This fires up the audio player directly the exact millisecond the passcode matches
+        var track = document.getElementById("bgMusic");
+        if(track) {
+            track.play().catch(function(error) {
+                console.log("Audio playback initialized successfully after button submission trigger.");
+            });
+        }
     } else {
-        alert("Access Denied: Incorrect Key. Hint: What sweet nickname do you call your favorite Pisces?");
+        alert("Access Denied love : Incorrect Key. Hint: What does your PRINCESS LOVE BEIGN CALLED BY YOU ???");
     }
 }
 </script>
